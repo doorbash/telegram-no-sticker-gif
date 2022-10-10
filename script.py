@@ -16,8 +16,6 @@ else:
 client = TelegramClient('default', os.environ['API_ID'], os.environ['API_HASH'], proxy=proxy)
 client.start()
 
-media_set = set()
-
 @client.on(events.NewMessage)
 async def my_event_handler(event):
     if type(event.message.peer_id) != PeerUser: return
