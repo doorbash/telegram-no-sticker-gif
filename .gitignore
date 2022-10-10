@@ -1,0 +1,3 @@
+*.session
+docker/db/db
+run.sh
