@@ -20,10 +20,9 @@ media_set = set()
 
 @client.on(events.NewMessage)
 async def my_event_handler(event):
-    if type(event.message.peer_id) != PeerUser:
-        return
+    if type(event.message.peer_id) != PeerUser: return
     is_media = event.message.media != None and event.message.document != None 
-    is_sticker = is_media and (event.message.document.mime_type in ("image/webp", "application/x-tgsticker", 'video/webm'))
+    is_sticker = is_media and event.message.document.mime_type in ("image/webp", "application/x-tgsticker", 'video/webm')
     is_gif = is_media and event.message.document.mime_type in ("video/mp4") and event.message.document.size < 1024 * 1024
     is_from_myself = event.message.peer_id.user_id == me.id 
     if is_sticker or is_gif:
